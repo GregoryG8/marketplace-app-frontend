@@ -6,23 +6,23 @@ const Colors = {
   textColor: "#1a2c32",
 };
 
-const Styles = {
-  primaryColor: {
-    color: Colors.primaryColor,
-  },
+// const Styles = {
+//   primaryColor: {
+//     color: Colors.primaryColor,
+//   },
 
-  primaryBackground: {
-    backgroundColor: Colors.primaryColor,
-    color: "#fff",
-  },
+//   primaryBackground: {
+//     backgroundColor: Colors.primaryColor,
+//     color: "#fff",
+//   },
 
-  secondaryColor: {
-    color: Colors.secondaryColor,
-  },
+//   secondaryColor: {
+//     color: Colors.secondaryColor,
+//   },
 
-  secondaryBackground: {
-    backgroundColor: Colors.secondaryColor,
-    color: Colors.textColor, 
-  },
-};
-export default { Colors, Styles };
+//   secondaryBackground: {
+//     backgroundColor: Colors.secondaryColor,
+//     color: Colors.textColor, 
+//   },
+// };
+export default Colors;
