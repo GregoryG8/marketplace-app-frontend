@@ -3,10 +3,15 @@ import { Text, View, StyleSheet, Image } from "react-native";
 import Constants from "expo-constants";
 import { LinearGradient } from "expo-linear-gradient";
 import Colors from "../styles/Colors";
+import SlideButton from "../components/ios/SlideButton";
+import ButtonAndroid from "../components/android/ButtonAndroid";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Platform } from 'react-native';
 
 export default function Home() {
   return (
-    <View style={styles.home}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={styles.home}>
       <View style={styles.imagesContainer}>
         <LinearGradient
           colors={[
@@ -95,11 +100,23 @@ export default function Home() {
           ]}
           style={styles.gradientBottom}
         />
-        <View >
+        <View style={styles.titleContainer}>
           <Text style={styles.titleWelcome}>Conecta, Entrena y Supérate</Text>
         </View>
+        <View style={styles.descriptionContainer}>
+          <Text style={styles.descriptionHome}>
+            Encuentra tu coach fitness perfecto. Transforma tu entrenamiento hoy
+            mismo.{" "}
+          </Text>
+        </View>
+        
+        {Platform.OS === 'ios' ? <SlideButton /> : <ButtonAndroid />}
+          
+        
       </View>
     </View>
+    </GestureHandlerRootView>
+    
   );
 }
 
@@ -183,10 +200,23 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
 
+  titleContainer: {
+    width: "65%",
+  },
   titleWelcome: {
-      fontWeight: "bold",
-      fontSize: 32,
-      textAlign: "center",
-      color: Colors.textColor,
+    fontWeight: "bold",
+    fontSize: 32,
+    textAlign: "center",
+    color: Colors.textColor,
+  },
+
+  descriptionContainer: {
+    width: "80%",
+  },
+
+  descriptionHome: {
+    color: Colors.primaryColor,
+    fontSize: 16,
+    textAlign: "center",
   },
 });
