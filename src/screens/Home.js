@@ -8,7 +8,7 @@ import ButtonAndroid from "../components/android/ButtonAndroid";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Platform } from 'react-native';
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.home}>
@@ -110,7 +110,9 @@ export default function Home() {
           </Text>
         </View>
         
-        {Platform.OS === 'ios' ? <SlideButton /> : <ButtonAndroid />}
+        
+
+         {Platform.OS === 'ios' ? <SlideButton navigation={navigation} /> : <ButtonAndroid navigation={navigation} />} 
           
         
       </View>
