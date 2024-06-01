@@ -3,15 +3,40 @@ import {
     SafeAreaView,
     View,
     Text,
+    Button
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Google from 'react-native-vector-icons/AntDesign';
 import CustomButton from '../components/CustomButton';
 import InputField from '../components/InputtField';
 import { GestureHandlerRootView, TouchableOpacity } from 'react-native-gesture-handler';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
 const LoginScreen = ({ navigation }) => {
+    GoogleSignin.configure({
+        webClientId: ''
+    });
+
+    async function onGoogleButtonPress() {
+        console.log("Validando Google");
+        // Check if your device supports Google Play
+        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+        // Get the users ID token
+        const { idToken } = await GoogleSignin.signIn();
+
+        // Create a Google credential with the token
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+        // Sign-in the user with the credential
+        //return auth().signInWithCredential(googleCredential);
+        const userSignIn =  auth().signInWithCredential(googleCredential);
+        userSignIn.then((user) => {
+            console.log('Signed in with Google! User: ', user);
+        }).catch((error) => {
+            console.log('Error signing in with Google! Error: ', error);
+        })
+    }
     const [password, onChangePassword] = React.useState('');
     const [email, onChangeEmail] = React.useState('');
     return (
@@ -71,6 +96,7 @@ const LoginScreen = ({ navigation }) => {
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}>
+                        {/*
                         <TouchableOpacity onPress={() => console.log("Hola perra")}
                             style={{
                                 width: 50,
@@ -87,6 +113,12 @@ const LoginScreen = ({ navigation }) => {
                             }}>
                             <Google name="google" size={30} color="#D92929" />
                         </TouchableOpacity>
+                        */}
+                        
+                        <Button
+                            title="Google Sign-In"
+                            onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
+                        />
                     </View>
                     <Text style={{ textAlign: 'center', color: '#666', marginTop: 50 }}>
                         Don’t have account ? <TouchableOpacity onPress={() => navigation.navigate('Register')}><Text style={{ color: '#438e96', fontWeight: '700', marginBottom: -3 }}>Sign Up</Text></TouchableOpacity>
