@@ -11,7 +11,7 @@ import CustomButton from '../components/CustomButton';
 import InputField from '../components/InputtField';
 import { GestureHandlerRootView, TouchableOpacity } from 'react-native-gesture-handler';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
     const [password, onChangePassword] = React.useState('');
     const [email, onChangeEmail] = React.useState('');
     return (
@@ -22,7 +22,7 @@ const LoginScreen = () => {
                         style={{
                             fontSize: 28,
                             fontWeight: '500',
-                            color: '#333',
+                            color: '#1a2c32',
                             marginBottom: 30,
                         }}>
                         Login
@@ -33,7 +33,7 @@ const LoginScreen = () => {
                             <MaterialIcons
                                 name="alternate-email"
                                 size={20}
-                                color="#666"
+                                color="#438e96"
                                 style={{ marginRight: 5 }}
                             />
                         }
@@ -47,7 +47,7 @@ const LoginScreen = () => {
                             <Ionicons
                                 name="lock-closed-outline"
                                 size={20}
-                                color="#666"
+                                color="#438e96"
                                 style={{ marginRight: 5 }}
                             />
                         }
@@ -89,7 +89,7 @@ const LoginScreen = () => {
                         </TouchableOpacity>
                     </View>
                     <Text style={{ textAlign: 'center', color: '#666', marginTop: 50 }}>
-                        Don’t have account ? <TouchableOpacity onPress={() => console.log("Hola perra")}><Text style={{ color: '#AD40AF', fontWeight: '700', marginBottom: -3 }}>Sign Up</Text></TouchableOpacity>
+                        Don’t have account ? <TouchableOpacity onPress={() => navigation.navigate('Register')}><Text style={{ color: '#438e96', fontWeight: '700', marginBottom: -3 }}>Sign Up</Text></TouchableOpacity>
                     </Text>
 
                 </View>
