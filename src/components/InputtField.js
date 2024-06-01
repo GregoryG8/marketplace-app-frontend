@@ -17,7 +17,7 @@ export default function InputField({
     <View
       style={{
         flexDirection: 'row',
-        borderBottomColor: '#ccc',
+        borderBottomColor: '#438e96',
         borderBottomWidth: 1,
         paddingBottom: 8,
         marginBottom: 25,
