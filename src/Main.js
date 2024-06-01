@@ -6,7 +6,7 @@ import Register from "./screens/Register";
 const Stack = createNativeStackNavigator();
 export default function Main() {
   return (
-    <Stack.Navigator initialRouteName="Register" screenOptions={{
+    <Stack.Navigator initialRouteName="Home" screenOptions={{
         headerShown: false,
     }}>
       <Stack.Screen name="Home" component={Home} />
