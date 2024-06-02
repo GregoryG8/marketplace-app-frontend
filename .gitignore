@@ -33,3 +33,9 @@ yarn.lock
 
 # typescript
 *.tsbuildinfo
+
+
+android/
+ios/
+
+google-services.json
