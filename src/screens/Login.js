@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView, View, Text, Button } from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -15,8 +15,10 @@ import auth from "@react-native-firebase/auth";
 const LoginScreen = ({ navigation }) => {
   GoogleSignin.configure({
     webClientId:
-      "",
+      "109495425450-pspsteh93brv6khop36uervsalku5dol.apps.googleusercontent.com",
   });
+
+  const [user, setUser] = useState(null);
 
   async function onGoogleButtonPress() {
     console.log("Validando Google");
@@ -34,6 +36,7 @@ const LoginScreen = ({ navigation }) => {
     userSignIn
       .then((user) => {
         console.log("Signed in with Google! User: ", user);
+        setUser(user);
       })
       .catch((error) => {
         console.log("Error signing in with Google! Error: ", error);
@@ -41,6 +44,8 @@ const LoginScreen = ({ navigation }) => {
   }
   const [password, onChangePassword] = React.useState("");
   const [email, onChangeEmail] = React.useState("");
+
+  console.log(user);
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, justifyContent: "center" }}>
