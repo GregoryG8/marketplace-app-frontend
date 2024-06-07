@@ -1,5 +1,5 @@
 import { Text, View, SafeAreaView, StyleSheet, TouchableOpacity } from "react-native";
-import React, { Component } from "react";
+import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Colors from "../styles/Colors";
 import InputField from "../components/InputtField";
