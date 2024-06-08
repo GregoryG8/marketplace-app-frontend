@@ -7,7 +7,7 @@ import Dashboard from "./screens/Dashboard";
 const Stack = createNativeStackNavigator();
 export default function Main() {
   return (
-    <Stack.Navigator initialRouteName="Dashboard" screenOptions={{
+    <Stack.Navigator initialRouteName="Register" screenOptions={{
         headerShown: false,
     }}>
       <Stack.Screen name="Home" component={Home} />
